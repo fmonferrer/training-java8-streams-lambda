@@ -1,6 +1,7 @@
 package training.java8.log;
 
 import java.io.PrintStream;
+import java.util.function.Supplier;
 
 public class Logger {
 
@@ -54,5 +55,17 @@ public class Logger {
 
     public boolean isErrorEnabled() {
         return level <= ERROR;
+    }
+
+    public void debug(Supplier<String> supplier) {
+        if (isDebugEnabled()) {
+            out.println("DEBUG: " + supplier.get());
+        }
+    }
+
+    public void error(Supplier<String> supplier) {
+        if (isErrorEnabled()) {
+            out.println("ERROR: " + supplier.get());
+        }
     }
 }

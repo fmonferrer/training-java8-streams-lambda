@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
+import java.util.function.Supplier;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.anyString;
@@ -44,7 +45,7 @@ public class LoggerTest {
 
     @Test
     public void lazy_logger_error_when_log_debug() throws Exception {
-        logger.debug(messageFormatter.format("Hola"));
+        logger.debug(() -> messageFormatter.format("Hola"));
 
         verify(messageFormatter, never()).format(anyString());
         verify(printer, never()).println(anyString());
@@ -52,10 +53,9 @@ public class LoggerTest {
 
     @Test
     public void lazy_logger_error_when_log_error() throws Exception {
-        logger.error(messageFormatter.format("Hola"));
+        logger.error(() -> messageFormatter.format("Hola"));
 
         verify(messageFormatter, times(1)).format(anyString());
         verify(printer, times(1)).println(anyString());
     }
-
 }
