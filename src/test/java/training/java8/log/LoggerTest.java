@@ -12,6 +12,7 @@ import static training.java8.log.Logger.ERROR;
 
 public class LoggerTest {
 
+    public static final int ONE = 1;
     private MessageFormatter messageFormatter;
     private PrintStream printer;
     private Logger logger;
@@ -28,7 +29,7 @@ public class LoggerTest {
     public void not_lazy_logger_error_when_log_debug() throws Exception {
         logger.debug(messageFormatter.format("Non important message."));
 
-        verify(messageFormatter, times(1)).format(anyString());
+        verify(messageFormatter, times(ONE)).format(anyString());
         verify(printer, never()).println(anyString());
     }
 
@@ -36,8 +37,8 @@ public class LoggerTest {
     public void not_lazy_logger_error_when_log_error() throws Exception {
         logger.error(messageFormatter.format("Very important message."));
 
-        verify(messageFormatter, times(1)).format(anyString());
-        verify(printer, times(1)).println(anyString());
+        verify(messageFormatter, times(ONE)).format(anyString());
+        verify(printer, times(ONE)).println(anyString());
     }
 
     /*
@@ -57,8 +58,8 @@ public class LoggerTest {
     public void lazy_logger_error_when_log_error() throws Exception {
         logger.error(messageFormatter.format("Very important message."));
 
-        verify(messageFormatter, times(1)).format(anyString());
-        verify(printer, times(1)).println(anyString());
+        verify(messageFormatter, times(ONE)).format(anyString());
+        verify(printer, times(ONE)).println(anyString());
     }
 
 }
