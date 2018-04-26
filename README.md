@@ -1,6 +1,6 @@
 # Training Java8 Streams & Lambdas
 Workshop based on https://github.com/victorrentea/java8-voxxed
- * Video: https://www.youtube.com/watch?v=uH9A37k2QkU
+ * Video: https://youtu.be/qcIiufH_u7c
  * Slides: http://www.slideshare.net/VictorRentea/clean-lambdas-streams-in-java8 
 
 This does a review of the functionalities of the streams & lambdas.
